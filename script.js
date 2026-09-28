@@ -78,7 +78,7 @@
         const c = fig.cloneNode(true);
         ['data-zoom', 'tabindex', 'role', 'aria-label'].forEach(a => c.removeAttribute(a));
         c.classList.remove('m');
-        c.style.cssText = `inset:0;--pos:${fig.style.getPropertyValue('--pos') || '50% 50%'}`;
+        c.style.cssText = `top:0;right:0;bottom:0;left:0;--pos:${fig.style.getPropertyValue('--pos') || '50% 50%'}`;
         $('lbFrame').replaceChildren(c);
         lb.classList.add('open');
         lb.setAttribute('aria-hidden', 'false');
@@ -177,12 +177,15 @@
         });
         const still = false /* always animate: this deck is shown on screens */;
         let measured = false, lineGeo = [];
-        document.fonts.ready.then(() => document.fonts.load('400 100px Archivo')).then(() => {
+        const fontsOk = Promise.race([document.fonts.ready.then(() => document.fonts.load('400 100px Archivo')), new Promise(r => setTimeout(r, 2500))]);
+        const measure = () => {
             const put = (c, q) => { c.g.style.fontWeight = (c.w0 + (c.w1 - c.w0) * q).toFixed(0); c.g.style.fontStretch = (c.x0 + (c.x1 - c.x0) * q).toFixed(1) + '%'; };
             chars.forEach(c => { put(c, 1); c.b = c.g.offsetWidth; put(c, 0); c.a = c.g.offsetWidth; c.put = put; c.v = 0; c.s.style.width = c.a + 'px'; });
             lineGeo = [...hero.querySelectorAll('.ln')].map(ln => ({ ln, x: hero.offsetLeft + ln.offsetLeft, y: hero.offsetTop + ln.offsetTop + ln.offsetHeight / 2, w: ln.offsetWidth }));
             measured = true;
-        });
+        };
+        fontsOk.then(measure);
+        document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', measure);   // font arrived late → re-measure
         let px = -1e4, py = -1e4, lastMove = -1e9, wasOn = false;
         const track = (x, y) => { px = x; py = y; lastMove = performance.now(); };
         addEventListener('pointermove', e => track(e.clientX, e.clientY), { passive: true });

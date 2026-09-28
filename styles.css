@@ -39,13 +39,13 @@
 
 /* === FIXED STAGE BASE (viewport-base.css, full) === */
 html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--stage-bg, #000); }
-.deck-viewport { position: fixed; inset: 0; overflow: hidden; background: var(--stage-bg, #000); }
+.deck-viewport { position: fixed; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; background: var(--stage-bg, #000); }
 .deck-stage {
     position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
     overflow: hidden; transform-origin: 0 0; background: var(--slide-bg, #fff);
 }
 .slide {
-    position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden;
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden;
     display: block; visibility: hidden; opacity: 0; pointer-events: none;
     background: var(--slide-bg, #fff);
 }
@@ -127,7 +127,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    =========================================================== */
 .ph { position: absolute; overflow: hidden; background: var(--ph); }
 .ph-media {
-    position: absolute; inset: 0;
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
     background-color: var(--ph);
     /* faint facade grid so crop changes read even before photos arrive */
     background-image:
@@ -140,8 +140,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ph.has-img .ph-media { background-size: cover; }
 /* whole image, no crop — strips filled with the image's own background */
 .ph.fit-contain .ph-media { background-size: contain; background-repeat: no-repeat; background-color: #EAE5E0; }
-.ph-tint { position: absolute; inset: 0; transition: background-color 1.2s var(--ease); pointer-events: none; }
-.ph::before { content: ''; position: absolute; inset: 20px; border: 1px solid var(--rule); z-index: 2; pointer-events: none; }
+.ph-tint { position: absolute; top: 0; right: 0; bottom: 0; left: 0; transition: background-color 1.2s var(--ease); pointer-events: none; }
+.ph::before { content: ''; position: absolute; top: 20px; right: 20px; bottom: 20px; left: 20px; border: 1px solid var(--rule); z-index: 2; pointer-events: none; }
 .ph-label { position: absolute; left: 44px; bottom: 40px; right: 44px; z-index: 3; display: grid; gap: 8px; }
 .ph-label.top { top: 96px; left: 96px; bottom: auto; }
 .ph-k { font: 500 12px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--terra); }
@@ -190,7 +190,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
     font: 500 12px var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--terra); }
 
 /* === LIGHTBOX === */
-.lb { position: absolute; inset: 0; z-index: 80; background: color-mix(in srgb, var(--ivory) 97%, transparent); display: grid; place-items: center;
+.lb { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 80; background: color-mix(in srgb, var(--ivory) 97%, transparent); display: grid; place-items: center;
       opacity: 0; visibility: hidden; transition: opacity .6s var(--ease), visibility 0s linear .6s; cursor: zoom-out; }
 .lb.open { opacity: 1; visibility: visible; transition: opacity .6s var(--ease), visibility 0s; }
 .lb-frame { position: relative; width: 1440px; height: 810px; }
@@ -213,7 +213,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
    =========================================================== */
 .s3 { --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
 .map { overflow: hidden; }
-.map::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2;     /* HUD grid */
+.map::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none; z-index: 2;     /* HUD grid */
     background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
     background-size: 92px 92px; opacity: .55; }
 .scan { position: absolute; left: 0; right: 0; top: -120px; height: 120px; z-index: 3; pointer-events: none; will-change: transform;
@@ -227,8 +227,8 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .hot { width: 34px; height: 34px; margin: -17px 0 0 -17px; z-index: 6; }
 .hot i { position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%;
     border: 1.5px solid var(--terra); background: color-mix(in srgb, var(--ivory) 70%, transparent); transition: background .4s; }
-.hot i::before { content: ''; position: absolute; inset: 11px; border-radius: 50%; background: var(--terra); }
-.hot i::after { content: ''; position: absolute; inset: -1.5px; border-radius: 50%; border: 1.5px solid var(--terra); animation: ping 2.2s var(--ease) infinite; }
+.hot i::before { content: ''; position: absolute; top: 11px; right: 11px; bottom: 11px; left: 11px; border-radius: 50%; background: var(--terra); }
+.hot i::after { content: ''; position: absolute; top: -1.5px; right: -1.5px; bottom: -1.5px; left: -1.5px; border-radius: 50%; border: 1.5px solid var(--terra); animation: ping 2.2s var(--ease) infinite; }
 @keyframes ping { from { transform: scale(1); opacity: .9; } to { transform: scale(2.4); opacity: 0; } }
 .hot span { position: absolute; left: 43px; top: 4px; white-space: nowrap; padding: 6px 10px; background: var(--espresso); color: var(--ivory);
     font: 500 12px/1 var(--mono, monospace); letter-spacing: .12em; text-transform: uppercase; }
@@ -236,7 +236,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .hot.on i { background: var(--terra); }
 .hot.on i::before { background: var(--ivory); }
 
-.lead { position: absolute; inset: 0; width: 1920px; height: 1080px; max-width: none; max-height: none; pointer-events: none; z-index: 5; }
+.lead { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 1920px; height: 1080px; max-width: none; max-height: none; pointer-events: none; z-index: 5; }
 .lead polyline { fill: none; stroke: var(--terra); stroke-width: 1.5; stroke-dasharray: 1; stroke-dashoffset: 1; }
 .lead.draw polyline { animation: draw .9s var(--ease) forwards; }
 .lead circle { fill: var(--terra); opacity: 0; }
@@ -279,12 +279,12 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .w4.on i { width: 40px; background: var(--terra); }
 
 .stage4 { perspective: 1400px; }
-.tilt { position: absolute; inset: 0; overflow: hidden; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s var(--ease); }
+.tilt { position: absolute; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s var(--ease); }
 .s4 .ph-media { transition: scale 3s var(--ease) var(--d, 0s), transform 1.4s var(--ease); }
-.spot { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; transition: opacity .5s;
+.spot { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 3; pointer-events: none; opacity: 0; transition: opacity .5s;
     background: radial-gradient(circle 260px at var(--mx, 50%) var(--my, 50%), rgba(10,8,6,0) 0, rgba(10,8,6,.55) 100%); }
 .stage4:hover .spot { opacity: 1; }
-.curtain { position: absolute; inset: 0; z-index: 2; background: var(--terra); transform: translateX(-101%); pointer-events: none; }
+.curtain { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 2; background: var(--terra); transform: translateX(-101%); pointer-events: none; }
 .stage4.wipe .curtain { animation: sweep .8s var(--ease); }
 .card4 { overflow: hidden; }
 .card4 > .swap { position: relative; z-index: 1; }
@@ -363,7 +363,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .cats button.on { color: var(--espresso); padding-left: 28px; position: relative; }
 .cats button.on::before { content: ''; position: absolute; left: 0; top: 50%; width: 14px; height: 1px; background: var(--terra); }
 .anns { width: 290px; height: 500px; }
-.anns .swap { position: absolute; inset: 0; }
+.anns .swap { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
 .ann { position: absolute; left: 0; width: 290px; font: var(--dw) calc(34px * var(--hs))/1.15 var(--display); opacity: 0; transform: translateX(12px); transition: opacity .6s var(--ease), transform .8s var(--ease); }
 .ann span { display: block; margin-bottom: 8px; font: 500 13px var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--terra); }
 .ann::before { content: ''; position: absolute; left: -60px; top: 6px; width: 44px; height: 1px; background: var(--sand); }
@@ -375,7 +375,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 /* ===========================================================
    08 — CONNECTION DIAGRAM — lines draw in, then words
    =========================================================== */
-.dia { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; max-width: none; max-height: none; }
+.dia { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 1920px; height: 1080px; pointer-events: none; max-width: none; max-height: none; }
 .dia line { stroke: var(--sand); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 1;
     transition-property: stroke-dashoffset, stroke, opacity; transition-duration: 1.6s, .5s, .5s;
     transition-timing-function: var(--ease); transition-delay: var(--d, 0s), 0s, 0s; }
@@ -393,10 +393,19 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
    =========================================================== */
 .s9 { --slide-bg: #2E2521; }
 .s9 .lbl { color: rgba(243,239,231,.7); }
-.scrim { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(12,10,9,.68), rgba(12,10,9,0) 52%), linear-gradient(to top, rgba(12,10,9,.55), rgba(12,10,9,0) 30%); pointer-events: none; }
+.scrim { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to bottom, rgba(12,10,9,.68), rgba(12,10,9,0) 52%), linear-gradient(to top, rgba(12,10,9,.55), rgba(12,10,9,0) 30%); pointer-events: none; }
 .close-line { color: rgba(245,243,239,.85); font: italic var(--dw) calc(38px * var(--hs))/1.2 var(--display); color: rgba(243,239,231,.85); }
 
 /* === PERFORMANCE: hidden slides don't run their loops; GPU hints for the moving layers === */
 .slide:not(.active) *, .slide:not(.active) *::before, .slide:not(.active) *::after { animation-play-state: paused !important; }
 .marq .track { will-change: transform; }
 .tilt { will-change: transform; }
+
+/* === CLOSING: QR block === */
+.qr-panel { background: rgba(12,10,9,.72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-top: 2px solid var(--terra); }
+.qr-k { color: var(--light) !important; letter-spacing: .26em; }
+.qr { background: #fff; border: 1px solid rgba(245,243,239,.4); }
+.qr .ph-media { background-color: #fff; background-image: none; background-size: contain !important; background-repeat: no-repeat; }
+.qr::before { top: 14px; right: 14px; bottom: 14px; left: 14px; border: 1.5px dashed rgba(17,17,17,.25); }
+.qr .ph-label { left: 0; right: 0; bottom: 0; top: 0; align-content: center; justify-items: center; text-align: center; }
+.qr .ph-n { color: #8a857d; font-size: 16px; }

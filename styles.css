@@ -61,9 +61,6 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
     .slide:last-child { break-after: auto; page-break-after: auto; }
     .deck-controls, .chrome { display: none !important; }
 }
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .2s !important; }
-}
 
 /* === BASE === */
 body { font-family: var(--sans); color: var(--espresso); -webkit-font-smoothing: antialiased; }
@@ -219,10 +216,10 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .map::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2;     /* HUD grid */
     background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
     background-size: 92px 92px; opacity: .55; }
-.scan { position: absolute; left: 0; right: 0; height: 120px; z-index: 3; pointer-events: none;
+.scan { position: absolute; left: 0; right: 0; top: -120px; height: 120px; z-index: 3; pointer-events: none; will-change: transform;
     background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--terra) 16%, transparent), transparent);
     animation: scan 6s linear infinite; }
-@keyframes scan { from { top: -120px; } to { top: 100%; } }
+@keyframes scan { from { transform: translateY(0); } to { transform: translateY(1008px); } }
 .map-credit { position: absolute; right: 12px; bottom: 8px; z-index: 3; font: 400 11px/1 var(--sans); color: var(--taupe);
     background: color-mix(in srgb, var(--ivory) 80%, transparent); padding: 4px 6px; }
 .coords { font: 400 13px/1 var(--mono, monospace); letter-spacing: .08em; color: var(--taupe); }
@@ -399,14 +396,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .scrim { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(12,10,9,.68), rgba(12,10,9,0) 52%), linear-gradient(to top, rgba(12,10,9,.55), rgba(12,10,9,0) 30%); pointer-events: none; }
 .close-line { color: rgba(245,243,239,.85); font: italic var(--dw) calc(38px * var(--hs))/1.2 var(--display); color: rgba(243,239,231,.85); }
 
-/* === REDUCED MOTION: everything visible, nothing travels === */
-@media (prefers-reduced-motion: reduce) {
-    .r { transform: none; }
-    .m, .slide.active .m { clip-path: none; }
-    .m .ph-media { scale: 1; }
-    .dia line { stroke-dashoffset: 0; }
-    .marq .track { animation: none; }
-    .scan, .hot i::after { animation: none; }
-    .tilt { transform: none !important; }
-    .stage4.wipe .curtain { animation: none; }
-}
+/* === PERFORMANCE: hidden slides don't run their loops; GPU hints for the moving layers === */
+.slide:not(.active) *, .slide:not(.active) *::before, .slide:not(.active) *::after { animation-play-state: paused !important; }
+.marq .track { will-change: transform; }
+.tilt { will-change: transform; }

@@ -172,14 +172,15 @@
                 s.className = 'ch'; s.setAttribute('aria-hidden', 'true');
                 s.innerHTML = `<i class="g0">${g}</i>`;
                 ln.appendChild(s);
-                chars.push({ s, g: s.firstChild, w0, w1, x0, x1, v: -1, a: 0, b: 0 });
+                chars.push({ s, g: s.firstChild, w0, w1, x0, x1, v: -1, a: 0, b: 0, ln });
             });
         });
-        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        let measured = false;
+        const still = false /* always animate: this deck is shown on screens */;
+        let measured = false, lineGeo = [];
         document.fonts.ready.then(() => document.fonts.load('400 100px Archivo')).then(() => {
             const put = (c, q) => { c.g.style.fontWeight = (c.w0 + (c.w1 - c.w0) * q).toFixed(0); c.g.style.fontStretch = (c.x0 + (c.x1 - c.x0) * q).toFixed(1) + '%'; };
             chars.forEach(c => { put(c, 1); c.b = c.g.offsetWidth; put(c, 0); c.a = c.g.offsetWidth; c.put = put; c.v = 0; c.s.style.width = c.a + 'px'; });
+            lineGeo = [...hero.querySelectorAll('.ln')].map(ln => ({ ln, x: hero.offsetLeft + ln.offsetLeft, y: hero.offsetTop + ln.offsetTop + ln.offsetHeight / 2, w: ln.offsetWidth }));
             measured = true;
         });
         let px = -1e4, py = -1e4, lastMove = -1e9, wasOn = false;
@@ -192,27 +193,33 @@
             if (on && !wasOn) heroEnter = t + 500;                       // let the title fade in first
             wasOn = on;
             if (on && measured) {
-                const scale = stage.getBoundingClientRect().width / 1920, R = 130 * scale;
-                const lines = hero.querySelectorAll('.ln');
+                // everything in 1920×1080 stage px — no getBoundingClientRect per letter
+                const R = 130;
                 let cx = -1e4, cy = -1e4;
-                if (t - lastMove < 2500) { cx = px; cy = py; }          // real pointer
-                else if (!still) {                                       // one sweep: line 1 → line 2
-                    const e = t - heroEnter, k = e / HERO_SWEEP;
+                if (t - lastMove < 2500) {                               // real pointer → stage px
+                    const f = Math.min(innerWidth / 1920, innerHeight / 1080);
+                    cx = (px - (innerWidth - 1920 * f) / 2) / f; cy = (py - (innerHeight - 1080 * f) / 2) / f;
+                } else if (!still) {                                     // one sweep: line 1 → line 2
+                    const k = (t - heroEnter) / HERO_SWEEP;
                     if (k >= 0 && k < 2) {
-                        const ln = lines[k < 1 ? 0 : 1].getBoundingClientRect(), p = ease(k % 1);
-                        cx = ln.left - 120 * scale + (ln.width + 240 * scale) * p; cy = ln.top + ln.height / 2;
+                        const L = lineGeo[k < 1 ? 0 : 1], p = ease(k % 1);
+                        cx = L.x - 120 + (L.w + 240) * p; cy = L.y;
                     }
                 }
-                chars.forEach(c => {
-                    const r = c.s.getBoundingClientRect();
-                    const d = Math.hypot(r.left + r.width / 2 - cx, (r.top + r.height / 2 - cy) * 2.2);   // stay on the swept line
-                    const target = Math.exp(-((d / R) ** 2));
-                    const nv = Math.abs(target - c.v) < .002 ? target : c.v + (target - c.v) * (still ? 1 : .14);
-                    if (nv === c.v) return;
-                    c.v = nv;
-                    c.put(c, c.v);
-                    c.s.style.width = (c.a + (c.b - c.a) * c.v).toFixed(2) + 'px';
-                    c.g.style.color = c.v > .02 ? `color-mix(in srgb, var(--terra) ${(c.v * 100).toFixed(0)}%, var(--espresso))` : '';
+                lineGeo.forEach(L => {
+                    let x = L.x;
+                    chars.forEach(c => {
+                        if (c.ln !== L.ln) return;
+                        const w = c.a + (c.b - c.a) * c.v, mid = x + w / 2; x += w;
+                        const d = Math.hypot(mid - cx, (L.y - cy) * 2.2);
+                        const target = Math.exp(-((d / R) ** 2));
+                        const nv = Math.abs(target - c.v) < .002 ? target : c.v + (target - c.v) * .14;
+                        if (nv === c.v) return;
+                        c.v = nv;
+                        c.put(c, c.v);
+                        c.s.style.width = (c.a + (c.b - c.a) * c.v).toFixed(2) + 'px';
+                        c.g.style.color = c.v > .02 ? `color-mix(in srgb, var(--terra) ${(c.v * 100).toFixed(0)}%, var(--espresso))` : '';
+                    });
                 });
             }
             requestAnimationFrame(frame);
@@ -259,7 +266,7 @@
     const s4 = document.querySelector('.s4'), st4 = $('stage4');
     if (s4 && st4) {
         const ORDER = ['work', 'meet', 'connect', 'experience'];
-        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const still = false /* always animate: this deck is shown on screens */;
         const sweep = () => { if (still) return; st4.classList.remove('wipe'); void st4.offsetWidth; st4.classList.add('wipe'); };
         let lastTouch = 0, wasActive = false;
         s4.addEventListener('click', e => { if (e.target.closest('[data-pick]')) { lastTouch = performance.now(); sweep(); } });

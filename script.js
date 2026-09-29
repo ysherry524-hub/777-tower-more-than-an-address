@@ -309,6 +309,14 @@
         };
     }
 
+    /* === PAGE 02 LOOP: the big photo cycles through the rooms nonstop while the slide is shown === */
+    const s5 = document.querySelector('.s5');
+    if (s5) {
+        const rooms = [...s5.querySelectorAll('[data-rooms]')].map(l => l.dataset.rooms);
+        let r = 0;
+        setInterval(() => { if (s5.classList.contains('active')) select(s5, rooms[r = (r + 1) % rooms.length]); }, 2600);
+    }
+
     /* === AUTOPLAY ===
        Every slide plays its own interactions, then advances; loops after the last slide.
        Any click / key / wheel / touch pauses it for 20 s. A (or the "Auto" button) switches it off/on. */
@@ -317,7 +325,7 @@
         s2: { keys: ['work', 'connect', 'experience'], intro: 900, step: 1500 },
         s3: { keys: ['building', 'location', 'city'], intro: 1100, step: 3200 },
         s4: { keys: ['work', 'meet', 'connect', 'experience'], intro: 1100, step: 2000 },
-        s5: { keys: ['checkin', 'opening', 'kahoot', 'food', 'tune', 'dj'], intro: 1100, step: 1600 },
+        s5: { hold: 12000 },                                             // photos loop on their own (PAGE 02 LOOP)
         s6: { keys: ['business', 'community', 'culture', 'brands'], intro: 1000, step: 1700 },
         s8: { keys: ['people', 'biz', 'comm', 'events'], intro: 3800, step: 1200 },
         s9: { hold: 4500 },

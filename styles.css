@@ -331,6 +331,12 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .sched button.on { color: var(--espresso); }
 .sched button.on time { color: var(--terra); }
 .s5 .stack .body { margin-top: 10px; font-size: 22px; }
+.proof { width: 800px; list-style: none; margin: 0; padding: 0; }
+.proof li { display: flex; align-items: baseline; gap: 22px; padding: 16px 0 14px; border-top: 1px solid var(--rule); }
+.proof li:last-child { border-bottom: 1px solid var(--rule); }
+.proof b { font: var(--dw) calc(54px * var(--hs) / .8)/1 var(--display); letter-spacing: var(--dls); font-stretch: var(--dst); text-transform: var(--dt); color: var(--espresso); }
+.proof b.sm { font-size: calc(38px * var(--hs) / .8); }
+.proof small { font: 500 16px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--terra); }
 .cobrand { font: 800 calc(60px * var(--hs) / .7)/1 var(--display); font-stretch: var(--dst); letter-spacing: -.01em; color: var(--espresso); }
 .cobrand span { color: var(--terra); font-weight: 300; margin: 0 .12em; }
 .layers { overflow: hidden; }

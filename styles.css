@@ -11,9 +11,9 @@
 :root, [data-theme="a"] {           /* A · Figueroa — white gallery, condensed caps, bronze */
     --ivory: #F6F5F2; --espresso: #111111; --char: #3B3B3B; --taupe: #6B6862; --quiet: #ABA79F;
     --terra: #9C7A45; --gold: #C9A96E; --sand: #CFCBC3; --ph: #E6E3DD; --rule: rgba(17,17,17,.14);
-    --stage-bg: #ECEAE5;
-    --display: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: uppercase; --dls: -.005em; --dst: 82%; --hs: .7;
-    --sans: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    --stage-bg: #F6F5F2;   /* = slide colour, so non-16:9 screens show no bars */
+    --display: 'Bodoni Moda', Didot, 'Bodoni 72', 'Songti SC', 'Noto Serif SC', 'STSong', serif; --dw: 400; --dt: none; --dls: -.01em; --dst: 100%; --hs: .84;   /* look B's type on look A */
+    --sans: 'Manrope', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 [data-theme="b"] {                  /* B · Noir — black, Didone serif like the wordmark, champagne */
     --ivory: #0E0E0D; --espresso: #F2EFE9; --char: #C9C4BA; --taupe: #8E887E; --quiet: #5B5751;
@@ -21,13 +21,6 @@
     --stage-bg: #070707;
     --display: 'Bodoni Moda', Didot, 'Bodoni 72', 'Songti SC', 'Noto Serif SC', 'STSong', serif; --dw: 400; --dt: none; --dls: -.01em; --dst: 100%; --hs: .84;
     --sans: 'Manrope', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
-}
-[data-theme="c"] {                  /* C · Stone — concrete grey, tight grotesk, LA signal orange */
-    --ivory: #E4E0D8; --espresso: #161616; --char: #383632; --taupe: #6A665F; --quiet: #A19C93;
-    --terra: #D24A1E; --gold: #E07A4F; --sand: #BEB8AD; --ph: #D6D1C7; --rule: rgba(22,22,22,.15);
-    --stage-bg: #DAD5CC;
-    --display: 'Schibsted Grotesk', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: none; --dls: -.04em; --dst: 100%; --hs: .8;
-    --sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 :root {
     --light: #F5F3EF;
@@ -428,3 +421,9 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .s9 .info { display: flex; flex-direction: column; gap: 6px; }
 .s9 .info a { font: 600 30px/1.2 var(--sans); letter-spacing: .02em; color: rgba(243,239,231,.95); text-decoration: none; }
 .s9 .info span { font: 500 20px/1.4 var(--sans); letter-spacing: .06em; color: rgba(243,239,231,.8); }
+/* page 2 fills the whole screen: the photo + scrim move to the viewport (cover), the stage keeps only the type */
+.deck-viewport::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .9s var(--ease);
+    background: linear-gradient(to bottom, rgba(12,10,9,.68), rgba(12,10,9,0) 52%), linear-gradient(to top, rgba(12,10,9,.55), rgba(12,10,9,0) 30%), url('assets/09-tower-night.jpg') 50% 40% / cover; }
+body.on-dark .deck-viewport::before { opacity: 1; }
+body.on-dark .deck-stage, .s9 { background: transparent; }
+.s9 > .ph, .s9 > .scrim { display: none; }

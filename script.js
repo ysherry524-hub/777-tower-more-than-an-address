@@ -40,6 +40,7 @@
         i = n;
         $('cur').textContent = pad(n + 1);
         stage.classList.toggle('dark', slides[n].classList.contains('dark'));
+        document.body.classList.toggle('on-dark', slides[n].classList.contains('dark'));
         $('explore').classList.toggle('on', slides[n].hasAttribute('data-explore'));
         history.replaceState(null, '', '#' + (n + 1));
     }
@@ -108,7 +109,7 @@
     if (!canFs) $('fsBtn').hidden = true;
 
     /* === LOOK SWITCHER (temporary, until one theme is chosen) === */
-    const THEMES = ['a', 'b', 'c'];
+    const THEMES = ['a', 'b'];
     function setTheme(t) {
         root.dataset.theme = t;
         $('themeBtn').textContent = '风格 · ' + t.toUpperCase();

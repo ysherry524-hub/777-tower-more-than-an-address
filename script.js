@@ -331,7 +331,7 @@
         s9: { hold: 4500 },
     };
     const TAIL = 900;
-    let autoOn = true, pausedUntil = 0, slideT0 = performance.now(), lastSlide = -1, lastStep = -1;
+    let autoOn = false, pausedUntil = 0, slideT0 = performance.now(), lastSlide = -1, lastStep = -1;
     const planOf = s => PLAN[Object.keys(PLAN).find(c => s.classList.contains(c))] || { hold: 6000 };
     const pauseAuto = () => { pausedUntil = performance.now() + 20000; };
     ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(ev => addEventListener(ev, e => {

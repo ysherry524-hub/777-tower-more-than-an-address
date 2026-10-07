@@ -339,6 +339,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .proof small { font: 500 16px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--terra); }
 .cobrand { font: 800 calc(60px * var(--hs) / .7)/1 var(--display); font-stretch: var(--dst); letter-spacing: -.01em; color: var(--espresso); }
 .cobrand span { color: var(--terra); font-weight: 300; margin: 0 .12em; }
+.statement { font: 400 44px/1.22 var(--sans); letter-spacing: -.01em; color: var(--espresso); }
 .layers { overflow: hidden; }
 .layer { opacity: 0; pointer-events: none; transition: opacity .9s var(--ease); }
 .layer.shown { opacity: 1; pointer-events: auto; }

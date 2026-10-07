@@ -99,7 +99,7 @@
     }
     function present(on = !document.body.classList.contains('presenting')) {
         document.body.classList.toggle('presenting', on);
-        $('presentBtn').textContent = on ? 'Exit' : 'Present';
+        $('presentBtn').textContent = on ? '退出' : '演示';
         if (on && canFs && !document.fullscreenElement) root.requestFullscreen().catch(() => {});
         if (!on && document.fullscreenElement) document.exitFullscreen();
     }
@@ -111,7 +111,7 @@
     const THEMES = ['a', 'b', 'c'];
     function setTheme(t) {
         root.dataset.theme = t;
-        $('themeBtn').textContent = 'Look · ' + t.toUpperCase();
+        $('themeBtn').textContent = '风格 · ' + t.toUpperCase();
         try { localStorage.setItem('777-theme', t); } catch (_) {}
     }
     function cycleTheme() { setTheme(THEMES[(THEMES.indexOf(root.dataset.theme) + 1) % THEMES.length]); }
@@ -339,7 +339,7 @@
         if (e.target.closest && e.target.closest('#autoBtn')) return;
         pauseAuto();
     }, { passive: true }));
-    function setAuto(on) { autoOn = on; $('autoBtn').textContent = 'Auto · ' + (on ? 'On' : 'Off'); slideT0 = performance.now(); lastStep = -1; }
+    function setAuto(on) { autoOn = on; $('autoBtn').textContent = '自动 · ' + (on ? '开' : '关'); slideT0 = performance.now(); lastStep = -1; }
     $('autoBtn').onclick = e => { e.stopPropagation(); setAuto(!autoOn); pausedUntil = 0; };
     addEventListener('keydown', e => { if ((e.key === 'a' || e.key === 'A') && !e.target.isContentEditable && !e.metaKey && !e.ctrlKey) setAuto(!autoOn); });
     setInterval(() => {

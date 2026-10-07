@@ -12,22 +12,22 @@
     --ivory: #F6F5F2; --espresso: #111111; --char: #3B3B3B; --taupe: #6B6862; --quiet: #ABA79F;
     --terra: #9C7A45; --gold: #C9A96E; --sand: #CFCBC3; --ph: #E6E3DD; --rule: rgba(17,17,17,.14);
     --stage-bg: #ECEAE5;
-    --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif; --dw: 700; --dt: uppercase; --dls: -.005em; --dst: 82%; --hs: .7;
-    --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --display: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: uppercase; --dls: -.005em; --dst: 82%; --hs: .7;
+    --sans: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 [data-theme="b"] {                  /* B · Noir — black, Didone serif like the wordmark, champagne */
     --ivory: #0E0E0D; --espresso: #F2EFE9; --char: #C9C4BA; --taupe: #8E887E; --quiet: #5B5751;
     --terra: #C9A96E; --gold: #C9A96E; --sand: #3A3733; --ph: #1B1A18; --rule: rgba(242,239,233,.16);
     --stage-bg: #070707;
-    --display: 'Bodoni Moda', Didot, 'Bodoni 72', serif; --dw: 400; --dt: none; --dls: -.01em; --dst: 100%; --hs: .84;
-    --sans: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+    --display: 'Bodoni Moda', Didot, 'Bodoni 72', 'Songti SC', 'Noto Serif SC', 'STSong', serif; --dw: 400; --dt: none; --dls: -.01em; --dst: 100%; --hs: .84;
+    --sans: 'Manrope', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 [data-theme="c"] {                  /* C · Stone — concrete grey, tight grotesk, LA signal orange */
     --ivory: #E4E0D8; --espresso: #161616; --char: #383632; --taupe: #6A665F; --quiet: #A19C93;
     --terra: #D24A1E; --gold: #E07A4F; --sand: #BEB8AD; --ph: #D6D1C7; --rule: rgba(22,22,22,.15);
     --stage-bg: #DAD5CC;
-    --display: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif; --dw: 700; --dt: none; --dls: -.04em; --dst: 100%; --hs: .8;
-    --sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --display: 'Schibsted Grotesk', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: none; --dls: -.04em; --dst: 100%; --hs: .8;
+    --sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 :root {
     --light: #F5F3EF;
@@ -339,7 +339,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .proof small { font: 500 16px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--terra); }
 .cobrand { font: 800 calc(60px * var(--hs) / .7)/1 var(--display); font-stretch: var(--dst); letter-spacing: -.01em; color: var(--espresso); }
 .cobrand span { color: var(--terra); font-weight: 300; margin: 0 .12em; }
-.statement { font: 400 44px/1.22 var(--sans); letter-spacing: -.01em; color: var(--espresso); }
+.statement { font: 400 52px/1.22 var(--sans); letter-spacing: -.01em; color: var(--espresso); }
 .layers { overflow: hidden; }
 .layer { opacity: 0; pointer-events: none; transition: opacity .9s var(--ease); }
 .layer.shown { opacity: 1; pointer-events: auto; }
@@ -416,3 +416,6 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .qr::before { top: 14px; right: 14px; bottom: 14px; left: 14px; border: 1.5px dashed rgba(17,17,17,.25); }
 .qr .ph-label { left: 0; right: 0; bottom: 0; top: 0; align-content: center; justify-items: center; text-align: center; }
 .qr .ph-n { color: #8a857d; font-size: 16px; }
+
+/* CJK: no synthetic italics */
+.close-line, .fig { font-style: normal; }

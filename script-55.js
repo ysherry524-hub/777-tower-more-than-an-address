@@ -4,7 +4,7 @@
    ← → / Space / PageUp / PageDown step by hand (the loop carries on from there).
    =========================================================== */
 (() => {
-    const W = 2160, H = 3840;
+    const W = 1080, H = 1920;
     const HOLD = [20000, 8000];          // ms per page
     const LOOP_STEP = 2500;              // ms per photo on page 1
     const stage = document.getElementById('stage');

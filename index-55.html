@@ -9,7 +9,7 @@
 <script>
 /* Stale-copy guard — same as index.html; BUILD is stamped by the pre-commit hook. */
 (function () {
-    var BUILD = '20261007143025';
+    var BUILD = '20261007152955';
     fetch('version.txt?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (v) {
         v = v.trim();
         var u = new URL(location.href);
@@ -18,11 +18,11 @@
 })();
 </script>
 <title>777 Tower — 不止是一个地址 · 55"</title>
-<link rel="stylesheet" href="fonts.css?v=20261007143025">
-<link rel="stylesheet" href="styles-55.css?v=20261007143025">
+<link rel="stylesheet" href="fonts.css?v=20261007152955">
+<link rel="stylesheet" href="styles-55.css?v=20261007152955">
 </head>
 <!--
-  55-inch portrait display version: 2160 × 3840 stage, autoplay loop, no on-screen controls.
+  55-inch portrait display version: 1080 × 1920 stage, autoplay loop, no on-screen controls.
   Content is identical to index.html; only the layout is redrawn for the big vertical screen.
   ← → / Space change page by hand.
 -->
@@ -39,11 +39,11 @@
 
     <div class="text">
       <p class="lbl r" style="--d:.3s">持续深化的合作</p>
-      <h2 class="h r" style="--d:.4s">欢迎大家来到<br>777 Tower</h2>
+      <h2 class="h" style="--d:.4s"><span class="ln"><span>欢迎大家来到</span></span><span class="ln"><span>777 Tower</span></span></h2>
       <p class="copy r" style="--d:.6s">我们幸得一众学子赋予这个社区鲜活的生命力；<br>更欣喜可以与大家一路同行，共同成长。</p>
-      <p class="cobrand r" style="--d:.75s">SWCSSA <span>×</span> 777</p>
+      <p class="cobrand r" style="--d:.8s">SWCSSA <span>×</span> 777</p>
       <div class="row">
-        <ul class="proof r" style="--d:.9s">
+        <ul class="proof">
           <li><b>1 年 +</b><small>合作历程</small></li>
           <li><b>学生社群</b></li>
           <li><b>连接 · 支持 · 机遇</b></li>
@@ -81,6 +81,6 @@
   </section>
 
 </main>
-<script src="script-55.js?v=20261007143025"></script>
+<script src="script-55.js?v=20261007152955"></script>
 </body>
 </html>

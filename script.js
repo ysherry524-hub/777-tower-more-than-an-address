@@ -36,6 +36,7 @@
         if (n === i) return;
         closeLb();
         slides.forEach((s, k) => s.classList.toggle('active', k === n));
+        document.body.classList.toggle('on-dark', slides[n].classList.contains('dark'));   // letterbox matches the slide
         [...dots.children].forEach((d, k) => d.classList.toggle('on', k === n));
         i = n;
         $('cur').textContent = pad(n + 1);

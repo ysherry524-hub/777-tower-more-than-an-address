@@ -11,9 +11,9 @@
 :root, [data-theme="a"] {           /* A · Figueroa — white gallery, condensed caps, bronze */
     --ivory: #F6F5F2; --espresso: #111111; --char: #3B3B3B; --taupe: #6B6862; --quiet: #ABA79F;
     --terra: #9C7A45; --gold: #C9A96E; --sand: #CFCBC3; --ph: #E6E3DD; --rule: rgba(17,17,17,.14);
-    --stage-bg: #ECEAE5;
-    --display: 'Noto Serif SC', 'Songti SC', 'STSong', serif; --dw: 700; --dt: none; --dls: .02em; --dst: 100%; --hs: .74;
-    --sans: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    --stage-bg: #F6F5F2;
+    --display: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: uppercase; --dls: -.005em; --dst: 82%; --hs: .7;
+    --sans: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 [data-theme="b"] {                  /* B · Noir — black, Didone serif like the wordmark, champagne */
     --ivory: #0E0E0D; --espresso: #F2EFE9; --char: #C9C4BA; --taupe: #8E887E; --quiet: #5B5751;
@@ -81,7 +81,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .h { font: var(--dw) calc(100px * var(--hs))/1 var(--display); letter-spacing: -.01em; white-space: nowrap; }
 .h-m { font-size: calc(84px * var(--hs)); white-space: normal; }
 .h-xl { font-size: calc(136px * var(--hs)); color: var(--light); }
-.lede { font: 400 27px/1.6 var(--sans); letter-spacing: .04em; color: var(--char); }
+.lede { font: 400 27px/1.45 var(--sans); color: var(--char); }
 .body { font: 400 24px/1.5 var(--sans); color: var(--char); }
 .addr { margin-top: 12px; font: var(--dw) calc(36px * var(--hs))/1.2 var(--display); }
 .fig { font: italic var(--dw) calc(22px * var(--hs))/1.3 var(--display); color: var(--taupe); }
@@ -422,12 +422,15 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .vid video, .vid img { display: block; width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
 /* page 1 body: both sentences share one style */
 .copy p { margin: 0 0 18px; font: 400 26px/1.75 var(--sans); letter-spacing: .03em; color: var(--char); }
-.proof b, .proof b.sm { font-size: 42px; }
+.proof b, .proof b.sm { font-size: calc(54px * var(--hs) / .8); }
 .proof li { padding: 18px 0 16px; }
 /* page 2: type floats straight on the photo, lifted by soft shadows */
 .s9 .scrim { display: none; }
-.lift { color: #FBF8F2; text-shadow: 0 1px 2px rgba(0,0,0,.5), 0 4px 14px rgba(0,0,0,.45), 0 10px 40px rgba(0,0,0,.4); }
-.s9 .close-line.lift { color: #FBF8F2; font-weight: 600; }
+.lift { color: #15120F; text-shadow: 0 2px 4px rgba(255,250,244,.35), 0 10px 28px rgba(20,12,8,.28); }
+.s9 .close-line.lift { color: #2A2420; font-weight: 600; }
 .s9 .info { display: flex; flex-direction: column; gap: 6px; }
-.s9 .info a { font: 600 30px/1.2 var(--sans); letter-spacing: .02em; color: #FBF8F2; text-decoration: none; }
-.s9 .info span { font: 500 20px/1.4 var(--sans); letter-spacing: .06em; color: #FBF8F2; }
+.s9 .info a { font: 700 30px/1.2 var(--sans); letter-spacing: .02em; color: #15120F; text-decoration: none; }
+.s9 .info span { font: 600 20px/1.4 var(--sans); letter-spacing: .06em; color: #2A2420; }
+/* letterbox: page 1 bars = slide colour; page 2 bars = blurred copy of the photo */
+.deck-viewport::before { content: ''; position: absolute; inset: -60px; background: url('assets/09-tower-night.jpg') center 40% / cover; filter: blur(40px) saturate(1.1); opacity: 0; transition: opacity .9s; }
+body.on-dark .deck-viewport::before { opacity: 1; }

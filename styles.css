@@ -9,9 +9,9 @@
    and set data-theme on <html>. Variable names are roles: --ivory = page, --espresso = ink,
    --terra = accent. */
 :root, [data-theme="a"] {           /* A · Figueroa — white gallery, condensed caps, bronze */
-    --ivory: #F6F5F2; --espresso: #111111; --char: #3B3B3B; --taupe: #6B6862; --quiet: #ABA79F;
+    --ivory: #F9F9F7; --espresso: #111111; --char: #3B3B3B; --taupe: #6B6862; --quiet: #ABA79F;
     --terra: #9C7A45; --gold: #C9A96E; --sand: #CFCBC3; --ph: #E6E3DD; --rule: rgba(17,17,17,.14);
-    --stage-bg: #F6F5F2;   /* = slide colour, so non-16:9 screens show no bars */
+    --stage-bg: #F9F9F7;   /* = slide colour, so non-16:9 screens show no bars */
     --display: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: uppercase; --dls: -.005em; --dst: 82%; --hs: .7;
     --sans: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }

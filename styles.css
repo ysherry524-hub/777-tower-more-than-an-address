@@ -12,8 +12,8 @@
     --ivory: #F6F5F2; --espresso: #111111; --char: #3B3B3B; --taupe: #6B6862; --quiet: #ABA79F;
     --terra: #9C7A45; --gold: #C9A96E; --sand: #CFCBC3; --ph: #E6E3DD; --rule: rgba(17,17,17,.14);
     --stage-bg: #F6F5F2;   /* = slide colour, so non-16:9 screens show no bars */
-    --display: 'Bodoni Moda', Didot, 'Bodoni 72', 'Songti SC', 'Noto Serif SC', 'STSong', serif; --dw: 400; --dt: none; --dls: -.01em; --dst: 100%; --hs: .84;   /* look B's type on look A */
-    --sans: 'Manrope', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    --display: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: uppercase; --dls: -.005em; --dst: 82%; --hs: .7;
+    --sans: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 [data-theme="b"] {                  /* B · Noir — black, Didone serif like the wordmark, champagne */
     --ivory: #0E0E0D; --espresso: #F2EFE9; --char: #C9C4BA; --taupe: #8E887E; --quiet: #5B5751;

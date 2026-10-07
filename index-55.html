@@ -9,7 +9,7 @@
 <script>
 /* Stale-copy guard — same as index.html; BUILD is stamped by the pre-commit hook. */
 (function () {
-    var BUILD = '20261007152955';
+    var BUILD = '20261007161832';
     fetch('version.txt?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (v) {
         v = v.trim();
         var u = new URL(location.href);
@@ -18,8 +18,8 @@
 })();
 </script>
 <title>777 Tower — 不止是一个地址 · 55"</title>
-<link rel="stylesheet" href="fonts.css?v=20261007152955">
-<link rel="stylesheet" href="styles-55.css?v=20261007152955">
+<link rel="stylesheet" href="fonts.css?v=20261007161832">
+<link rel="stylesheet" href="styles-55.css?v=20261007161832">
 </head>
 <!--
   55-inch portrait display version: 1080 × 1920 stage, autoplay loop, no on-screen controls.
@@ -31,7 +31,7 @@
 
   <!-- ============ PAGE 1 — 欢迎大家来到 777 Tower ============ -->
   <section class="slide s1" aria-label="欢迎大家来到 777 Tower">
-    <!-- Top: Google Earth fly-in (source ~/Downloads/地球.mp4, 1920w, no audio) -->
+    <!-- Bottom: Google Earth fly-in (source ~/Downloads/地球.mp4, 1920w, no audio) -->
     <div class="vid m" style="--d:.1s">
       <!-- MP4 in <img>: Safari plays it like a GIF; other browsers error → swap to <video> -->
       <img src="assets/55-earth.mp4" alt="" onerror="var v=document.createElement('video');v.muted=true;v.defaultMuted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.poster='assets/55-earth-poster.jpg';v.src='assets/55-earth.mp4';this.replaceWith(v);v.play().catch(function(){})">
@@ -81,6 +81,6 @@
   </section>
 
 </main>
-<script src="script-55.js?v=20261007152955"></script>
+<script src="script-55.js?v=20261007161832"></script>
 </body>
 </html>

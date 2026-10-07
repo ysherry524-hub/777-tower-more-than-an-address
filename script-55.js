@@ -1,11 +1,11 @@
 /* ===========================================================
    777 TOWER — 55" portrait display controller
-   Loops page 1 (20 s) → page 2 (8 s) forever; photos cycle every 2.5 s.
+   Loops page 1 (59 s) → page 2 (8 s) forever; photos cycle every 2.5 s.
    Click / ← → / Space / PageUp / PageDown step by hand (the loop carries on from there).
    =========================================================== */
 (() => {
     const W = 1080, H = 1920;
-    const HOLD = [20000, 8000];          // ms per page
+    const HOLD = [59000, 8000];          // ms per page — page 1 = full Earth video (58.9 s)
     const LOOP_STEP = 2500;              // ms per photo on page 1
     const stage = document.getElementById('stage');
     const slides = [...stage.querySelectorAll('.slide')];
@@ -23,6 +23,7 @@
         slides.forEach((s, k) => s.classList.toggle('active', k === n));
         document.body.classList.toggle('on-dark', slides[n].classList.contains('dark'));
         i = n;
+        if (n === 0) { const v = document.querySelector('.vid video'); if (v) v.currentTime = 0; }  // Earth restarts each loop
         clearTimeout(timer);
         timer = setTimeout(() => go(i + 1), HOLD[n] || 8000);
     }

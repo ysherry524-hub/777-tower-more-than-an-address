@@ -323,6 +323,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .sched button:hover { color: var(--char); }
 .sched button.on { color: var(--espresso); }
 .sched button.on time { color: var(--terra); }
+.s5 { --terra: #1F4E9C; }
 .s5 .stack .body { margin-top: 10px; font-size: 22px; }
 .proof { width: 800px; list-style: none; margin: 0; padding: 0; }
 .proof li { display: flex; align-items: baseline; gap: 22px; padding: 16px 0 14px; border-top: 1px solid var(--rule); }

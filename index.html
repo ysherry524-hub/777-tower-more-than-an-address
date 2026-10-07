@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>777 Tower — 不止是一个地址</title>
-<link rel="stylesheet" href="fonts.css?v=20261007h">
+<link rel="stylesheet" href="fonts.css?v=20261007i">
 <!-- extra faces for looks B/C only; non-blocking so a blocked Google never stalls the page -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@400;500;600&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="styles.css?v=20261007h">
+<link rel="stylesheet" href="styles.css?v=20261007i">
 </head>
 <!--
   PHOTOS: drop files into assets/ using the names printed on each frame
@@ -87,7 +87,8 @@
 
     <!-- Bottom: Google Earth fly-in (source ~/Downloads/地球.mp4, re-encoded 1024w, no audio) -->
     <div class="vid a r" style="left:980px;top:445px;width:844px;height:475px;--d:.55s">
-      <video src="assets/earth.mp4" poster="assets/earth-poster.jpg" autoplay muted loop playsinline webkit-playsinline x5-playsinline preload="auto"></video>
+      <!-- MP4 in <img>: Safari/iOS WeChat play it like a GIF, immune to autoplay blocks (Low Power Mode etc.); other browsers error → swap to <video> -->
+      <img src="assets/earth.mp4" alt="" onerror="var v=document.createElement('video');v.muted=true;v.defaultMuted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.poster='assets/earth-poster.jpg';v.src='assets/earth.mp4';this.replaceWith(v);v.play().catch(function(){})">
     </div>
   </section>
 
@@ -113,13 +114,15 @@
       <span class="ph-file">09-tower-night.jpg · 1920 × 1080</span>
     </figure>
     <div class="scrim"></div>
-    <h2 class="h h-xl a r" style="left:96px;top:150px;--d:1s">777 Tower 见</h2>
-    <p class="close-line a r" style="left:100px;top:300px;--d:1.6s">换个视角，看洛杉矶市中心。</p>
-    <div class="info-card a r" style="left:100px;top:384px;--d:2s"><a href="https://777tower.space/" target="_blank" rel="noopener">777tower.space ↗</a><span>洛杉矶 S Figueroa St 777 号</span></div>
+    <div class="float-card a r" style="left:96px;top:120px;--d:.8s">
+      <h2 class="h h-xl">777 Tower 见</h2>
+      <p class="close-line">换个视角，看洛杉矶市中心。</p>
+      <div class="info"><a href="https://www.777tower.space/" target="_blank" rel="noopener">www.777tower.space ↗</a><span>洛杉矶 S Figueroa St 777 号</span></div>
+    </div>
   </section>
 
 </main>
 </div>
-<script src="script.js?v=20261007h"></script>
+<script src="script.js?v=20261007i"></script>
 </body>
 </html>

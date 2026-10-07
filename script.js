@@ -407,4 +407,5 @@
     else document.addEventListener('WeixinJSBridgeReady', () => WeixinJSBridge.invoke('getNetworkType', {}, play));
     ['touchstart', 'pointerdown', 'click'].forEach(ev => addEventListener(ev, play, { passive: true }));
     document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
+    setInterval(play, 1000);   // WebKit drops autoplay while the slide is still fading in (visibility:hidden) and never resumes it
 })();

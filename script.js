@@ -398,5 +398,13 @@
 
     go((parseInt(location.hash.slice(1), 10) || 1) - 1);
 })();
-// WeChat iOS ignores autoplay until its bridge is ready
-document.addEventListener('WeixinJSBridgeReady', () => document.querySelectorAll('video').forEach(v => v.play().catch(() => {})));
+// Muted autoplay: retry on load, when WeChat's bridge is ready, on the first touch, and whenever the tab becomes visible again
+(() => {
+    const play = () => document.querySelectorAll('video').forEach(v => { v.muted = true; if (v.paused) v.play().catch(() => {}); });
+    play();
+    addEventListener('load', play);
+    if (window.WeixinJSBridge) WeixinJSBridge.invoke('getNetworkType', {}, play);
+    else document.addEventListener('WeixinJSBridgeReady', () => WeixinJSBridge.invoke('getNetworkType', {}, play));
+    ['touchstart', 'pointerdown', 'click'].forEach(ev => addEventListener(ev, play, { passive: true }));
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
+})();

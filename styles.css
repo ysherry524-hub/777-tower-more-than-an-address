@@ -12,8 +12,8 @@
     --ivory: #F6F5F2; --espresso: #111111; --char: #3B3B3B; --taupe: #6B6862; --quiet: #ABA79F;
     --terra: #9C7A45; --gold: #C9A96E; --sand: #CFCBC3; --ph: #E6E3DD; --rule: rgba(17,17,17,.14);
     --stage-bg: #ECEAE5;
-    --display: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --dw: 700; --dt: uppercase; --dls: -.005em; --dst: 82%; --hs: .7;
-    --sans: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    --display: 'Noto Serif SC', 'Songti SC', 'STSong', serif; --dw: 600; --dt: none; --dls: .02em; --dst: 100%; --hs: .74;
+    --sans: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 [data-theme="b"] {                  /* B · Noir — black, Didone serif like the wordmark, champagne */
     --ivory: #0E0E0D; --espresso: #F2EFE9; --char: #C9C4BA; --taupe: #8E887E; --quiet: #5B5751;
@@ -81,7 +81,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .h { font: var(--dw) calc(100px * var(--hs))/1 var(--display); letter-spacing: -.01em; white-space: nowrap; }
 .h-m { font-size: calc(84px * var(--hs)); white-space: normal; }
 .h-xl { font-size: calc(136px * var(--hs)); color: var(--light); }
-.lede { font: 400 27px/1.45 var(--sans); color: var(--char); }
+.lede { font: 300 27px/1.6 var(--sans); letter-spacing: .04em; color: var(--char); }
 .body { font: 400 24px/1.5 var(--sans); color: var(--char); }
 .addr { margin-top: 12px; font: var(--dw) calc(36px * var(--hs))/1.2 var(--display); }
 .fig { font: italic var(--dw) calc(22px * var(--hs))/1.3 var(--display); color: var(--taupe); }
@@ -339,7 +339,7 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .proof small { font: 500 16px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--terra); }
 .cobrand { font: 800 calc(60px * var(--hs) / .7)/1 var(--display); font-stretch: var(--dst); letter-spacing: -.01em; color: var(--espresso); }
 .cobrand span { color: var(--terra); font-weight: 300; margin: 0 .12em; }
-.statement { font: 400 52px/1.22 var(--sans); letter-spacing: -.01em; color: var(--espresso); }
+.statement { font: 400 50px/1.3 var(--display); letter-spacing: .02em; color: var(--espresso); }
 .layers { overflow: hidden; }
 .layer { opacity: 0; pointer-events: none; transition: opacity .9s var(--ease); }
 .layer.shown { opacity: 1; pointer-events: auto; }
@@ -421,3 +421,6 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 .close-line, .fig { font-style: normal; }
 .vid { overflow: hidden; background: #1a1a1a; }
 .vid video { display: block; width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
+.info-card { display: flex; flex-direction: column; gap: 8px; padding: 22px 30px 24px; background: rgba(12,10,9,.72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-left: 3px solid var(--gold); }
+.info-card a { font: 500 30px/1.2 var(--sans); letter-spacing: .02em; color: #F6F3EC; text-decoration: none; }
+.info-card span { font: 400 20px/1.4 var(--sans); letter-spacing: .06em; color: rgba(246,243,236,.82); }

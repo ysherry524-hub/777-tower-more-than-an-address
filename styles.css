@@ -419,3 +419,5 @@ body.editing::after { content: 'Editing — ⌘/Ctrl+S saves index.html · E to 
 
 /* CJK: no synthetic italics */
 .close-line, .fig { font-style: normal; }
+.vid { overflow: hidden; background: #1a1a1a; }
+.vid video { display: block; width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }

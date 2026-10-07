@@ -398,3 +398,5 @@
 
     go((parseInt(location.hash.slice(1), 10) || 1) - 1);
 })();
+// WeChat iOS ignores autoplay until its bridge is ready
+document.addEventListener('WeixinJSBridgeReady', () => document.querySelectorAll('video').forEach(v => v.play().catch(() => {})));

@@ -9,7 +9,7 @@
 <script>
 /* Stale-copy guard (WeChat etc. cache HTML): if version.txt says a newer build exists, reload with a fresh URL. BUILD is stamped by the pre-commit hook. */
 (function () {
-    var BUILD = '20261007162252';
+    var BUILD = '20261007162443';
     fetch('version.txt?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (v) {
         v = v.trim();
         var u = new URL(location.href);
@@ -18,10 +18,10 @@
 })();
 </script>
 <title>777 Tower — 不止是一个地址</title>
-<link rel="stylesheet" href="fonts.css?v=20261007162252">
+<link rel="stylesheet" href="fonts.css?v=20261007162443">
 <!-- extra faces for looks B/C only; non-blocking so a blocked Google never stalls the page -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="styles.css?v=20261007162252">
+<link rel="stylesheet" href="styles.css?v=20261007162443">
 </head>
 <!--
   PHOTOS: drop files into assets/ using the names printed on each frame
@@ -134,6 +134,6 @@
 
 </main>
 </div>
-<script src="script.js?v=20261007162252"></script>
+<script src="script.js?v=20261007162443"></script>
 </body>
 </html>

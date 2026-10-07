@@ -54,7 +54,7 @@ body { font-family: var(--f); color: var(--ink); -webkit-font-smoothing: antiali
 .proof b { font: 700 65px/1 var(--f); font-stretch: 82%; }
 .proof small { font: 500 var(--label-size)/1 var(--f); letter-spacing: .2em; color: var(--blue); }
 
-.loop { position: relative; flex: none; width: 380px; height: 214px; overflow: hidden; background: #E6E3DD; }
+.loop { position: relative; flex: none; width: 480px; height: 270px; overflow: hidden; background: #E6E3DD; }
 .loop figure { position: absolute; inset: 0; background: 50% 50% / cover no-repeat; opacity: 0; transition: opacity .9s var(--ease); }
 .loop figure.shown { opacity: 1; }
 

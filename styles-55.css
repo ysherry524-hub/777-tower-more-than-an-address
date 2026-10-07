@@ -1,0 +1,80 @@
+/* ===========================================================
+   777 TOWER — 55" PORTRAIT DISPLAY (2160 × 3840)
+   Same look as styles.css (Archivo, ink on off-white, blue accent on page 1,
+   light type on a scrim on page 2); every size is set for the big vertical screen.
+   =========================================================== */
+:root {
+    --display-width: 2160px; --display-height: 3840px;
+    --safe-x: 160px;
+    --title-size: 240px; --body-size: 72px; --label-size: 46px;
+    --bg: #F9F9F7; --ink: #111111; --char: #3B3B3B; --rule: rgba(17,17,17,.14);
+    --blue: #1F4E9C; --light: #F5F3EF; --night: #011866;
+    --f: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    --ease: cubic-bezier(.22, .61, .21, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); transition: background-color .9s var(--ease); }
+body.on-dark { background: var(--night); }
+body { font-family: var(--f); color: var(--ink); -webkit-font-smoothing: antialiased; cursor: none; }
+
+/* Fixed 2160×3840 stage, fitted to whatever the player outputs (4K or 1080p) */
+.stage { position: absolute; left: 0; top: 0; width: var(--display-width); height: var(--display-height); overflow: hidden; transform-origin: 0 0; }
+.slide { position: absolute; inset: 0; overflow: hidden; visibility: hidden; opacity: 0;
+         transition: opacity .9s var(--ease), visibility 0s linear .9s; }
+.slide.active { visibility: visible; opacity: 1; transition: opacity .9s var(--ease), visibility 0s; }
+
+/* Reveals — same as the original, distance scaled to the bigger canvas */
+.r { opacity: 0; transform: translateX(60px);
+     transition: opacity 1s var(--ease) var(--d, 0s), transform 1.3s var(--ease) var(--d, 0s); }
+.slide.active .r { opacity: 1; transform: none; }
+.m { clip-path: inset(100% 0 0 0); transition: clip-path 1.8s var(--ease) var(--d, 0s); }
+.slide.active .m { clip-path: inset(0); }
+
+/* === TYPE === */
+.lbl { font: 500 var(--label-size)/1.5 var(--f); letter-spacing: .22em; text-transform: uppercase; color: var(--blue); }
+.h { font: 700 var(--title-size)/1 var(--f); font-stretch: 82%; text-transform: uppercase; letter-spacing: -.005em; }
+.copy { font: 400 var(--body-size)/1.7 var(--f); letter-spacing: .03em; color: var(--char); }
+
+/* ===========================================================
+   PAGE 1
+   =========================================================== */
+.s1 { background: var(--bg); }
+.vid { position: absolute; left: 0; top: 0; width: 2160px; height: 1215px; background: #000; overflow: hidden; }
+.vid img, .vid video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.s1 .text { position: absolute; left: var(--safe-x); right: var(--safe-x); top: 1395px; }
+.s1 .h { margin-top: 44px; }
+.s1 .text > .copy:nth-of-type(2) { margin-top: 70px; }
+.cobrand { margin-top: 110px; font: 800 180px/1 var(--f); font-stretch: 82%; letter-spacing: -.01em; }
+.cobrand span { color: var(--blue); font-weight: 300; margin: 0 .12em; }
+
+.row { display: flex; align-items: center; gap: 64px; margin-top: 100px; }
+.proof { flex: 1; list-style: none; }
+.proof li { display: flex; align-items: baseline; gap: 40px; padding: 34px 0 30px; border-top: 2px solid var(--rule); }
+.proof li:last-child { border-bottom: 2px solid var(--rule); }
+.proof b { font: 700 130px/1 var(--f); font-stretch: 82%; }
+.proof small { font: 500 var(--label-size)/1 var(--f); letter-spacing: .2em; color: var(--blue); }
+
+.loop { position: relative; flex: none; width: 760px; height: 428px; overflow: hidden; background: #E6E3DD; }
+.loop figure { position: absolute; inset: 0; background: 50% 50% / cover no-repeat; opacity: 0; transition: opacity .9s var(--ease); }
+.loop figure.shown { opacity: 1; }
+
+.row + .copy { margin-top: 96px; }
+.s1 .text > .lbl:last-child { margin-top: 56px; }
+
+/* ===========================================================
+   PAGE 2 — photo sits on the bottom edge, its own night-blue sky continues above
+   =========================================================== */
+.s2 { background: var(--night); }
+.photo { position: absolute; left: 0; bottom: 0; width: 2160px; height: 2980px;
+         background: url('assets/55-tower-day.jpg') 50% 100% / cover no-repeat;
+         -webkit-mask: linear-gradient(transparent, #000 6%); mask: linear-gradient(transparent, #000 6%); }
+.scrim { position: absolute; inset: 0; pointer-events: none;
+         background: linear-gradient(to bottom, rgba(12,10,9,.68), rgba(12,10,9,0) 52%), linear-gradient(to top, rgba(12,10,9,.55), rgba(12,10,9,0) 30%); }
+.s2 .text { position: absolute; left: var(--safe-x); right: var(--safe-x); top: 260px; text-align: center; }
+.s2 .h { font-size: 290px; color: var(--light); letter-spacing: -.01em; white-space: nowrap; }
+.close-line { margin-top: 56px; font: 500 92px/1.3 var(--f); letter-spacing: .08em; color: rgba(243,239,231,.82); }
+.rule { display: block; width: 160px; height: 3px; margin: 80px auto 70px; background: rgba(243,239,231,.55); }
+.site { font: 600 88px/1.2 var(--f); letter-spacing: .01em; color: var(--light); }
+.site span { font-weight: 300; }
+.addr { margin-top: 22px; font: 500 54px/1.4 var(--f); letter-spacing: .14em; color: rgba(243,239,231,.7); }

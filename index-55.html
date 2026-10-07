@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>
+/* Stale-copy guard — same as index.html; BUILD is stamped by the pre-commit hook. */
+(function () {
+    var BUILD = '20261007142610';
+    fetch('version.txt?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (v) {
+        v = v.trim();
+        var u = new URL(location.href);
+        if (v && v !== BUILD && u.searchParams.get('v') !== v) { u.searchParams.set('v', v); location.replace(u.href); }
+    }).catch(function () {});
+})();
+</script>
+<title>777 Tower — 不止是一个地址 · 55"</title>
+<link rel="stylesheet" href="fonts.css?v=20261007142610">
+<link rel="stylesheet" href="styles-55.css?v=20261007142610">
+</head>
+<!--
+  55-inch portrait display version: 2160 × 3840 stage, autoplay loop, no on-screen controls.
+  Content is identical to index.html; only the layout is redrawn for the big vertical screen.
+  ← → / Space change page by hand.
+-->
+<body>
+<main class="stage" id="stage">
+
+  <!-- ============ PAGE 1 — 欢迎大家来到 777 Tower ============ -->
+  <section class="slide s1" aria-label="欢迎大家来到 777 Tower">
+    <!-- Top: Google Earth fly-in (source ~/Downloads/地球.mp4, 1920w, no audio) -->
+    <div class="vid m" style="--d:.1s">
+      <!-- MP4 in <img>: Safari plays it like a GIF; other browsers error → swap to <video> -->
+      <img src="assets/55-earth.mp4" alt="" onerror="var v=document.createElement('video');v.muted=true;v.defaultMuted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.poster='assets/55-earth-poster.jpg';v.src='assets/55-earth.mp4';this.replaceWith(v);v.play().catch(function(){})">
+    </div>
+
+    <div class="text">
+      <p class="lbl r" style="--d:.3s">持续深化的合作</p>
+      <h2 class="h r" style="--d:.4s">欢迎大家来到<br>777 Tower</h2>
+      <p class="copy r" style="--d:.6s">我们幸得一众学子赋予这个社区鲜活的生命力；<br>更欣喜可以与大家一路同行，共同成长。</p>
+      <p class="cobrand r" style="--d:.75s">SWCSSA <span>×</span> 777</p>
+      <div class="row">
+        <ul class="proof r" style="--d:.9s">
+          <li><b>1 年 +</b><small>合作历程</small></li>
+          <li><b>学生社群</b></li>
+          <li><b>连接 · 支持 · 机遇</b></li>
+        </ul>
+        <!-- 777 photos loop (source ~/Downloads/循环), 2.5 s each -->
+        <div class="loop m" style="--d:1s">
+          <figure style="background-image:url(assets/loop-01.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-02.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-03.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-04.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-05.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-06.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-07.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-08.jpg)"></figure>
+          <figure style="background-image:url(assets/loop-09.jpg)"></figure>
+        </div>
+      </div>
+      <p class="copy r" style="--d:1.1s">认识新朋友 · 建立新连接 · 在这里找到归属感</p>
+      <p class="lbl r" style="--d:1.2s">LA LINKUP · 2026 秋季</p>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 — 777 Tower 见 ============
+       Photo: Carol M. Highsmith, Library of Congress (LC-HS503-502), public domain. -->
+  <section class="slide s2 dark" aria-label="777 Tower 见">
+    <div class="photo"></div>
+    <div class="scrim"></div>
+    <div class="text">
+      <h2 class="h r" style="--d:.6s">777 Tower 见</h2>
+      <p class="close-line r" style="--d:.9s">换个视角，看洛杉矶市中心。</p>
+      <i class="rule r" style="--d:1.05s"></i>
+      <p class="site r" style="--d:1.2s">www.777tower.space <span>↗</span></p>
+      <p class="addr r" style="--d:1.3s">洛杉矶 S Figueroa St 777 号</p>
+    </div>
+  </section>
+
+</main>
+<script src="script-55.js?v=20261007142610"></script>
+</body>
+</html>

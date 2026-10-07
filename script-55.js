@@ -1,7 +1,7 @@
 /* ===========================================================
    777 TOWER — 55" portrait display controller
    Loops page 1 (20 s) → page 2 (8 s) forever; photos cycle every 2.5 s.
-   ← → / Space / PageUp / PageDown step by hand (the loop carries on from there).
+   Click / ← → / Space / PageUp / PageDown step by hand (the loop carries on from there).
    =========================================================== */
 (() => {
     const W = 1080, H = 1920;
@@ -31,6 +31,9 @@
         if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(i + 1); }
         if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(i - 1); }
     });
+
+    // Click anywhere = next page, like PowerPoint
+    addEventListener('click', () => go(i + 1));
 
     /* page 1 photo loop */
     const photos = [...document.querySelectorAll('.loop figure')];

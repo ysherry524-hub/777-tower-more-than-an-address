@@ -156,20 +156,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    =========================================================== */
 .chrome { position: absolute; z-index: 50; font: 500 13px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--taupe); transition: opacity .5s, color .6s; }
 .btns { left: 96px; top: 36px; display: flex; gap: 28px; }
-.btns button { letter-spacing: inherit; text-transform: inherit; color: inherit; }
-.btns button:hover { color: var(--espresso); }
+.btns button { letter-spacing: inherit; text-transform: inherit; color: rgba(31,78,156,.5); }
+.btns button:hover { color: #1F4E9C; }
 .progress { left: 96px; bottom: 40px; color: var(--espresso); }
 .progress #total { color: var(--taupe); }
-.dots { left: 250px; bottom: 34px; display: flex; gap: 6px; }
+.dots { left: 89px; bottom: 34px; display: flex; gap: 6px; }
 .dots button { padding: 6px 7px; font: inherit; letter-spacing: .08em; color: var(--quiet); position: relative; }
 .dots button:hover { color: var(--espresso); }
-.dots button.on { color: var(--espresso); }
-.dots button.on::after { content: ''; position: absolute; left: 7px; right: 7px; bottom: 0; height: 1px; background: var(--terra); }
+.dots button.on { color: #1F4E9C; }
+.dots button.on::after { content: ''; position: absolute; left: 7px; right: 7px; bottom: 0; height: 1px; background: #1F4E9C; }
 .explore { left: 640px; bottom: 40px; color: var(--terra); opacity: 0; }
 .explore::before { content: '· '; }
 .explore.on { opacity: 1; }
 
-.deck-stage.dark .chrome, .deck-stage.dark .progress, .deck-stage.dark .dots button { color: rgba(243,239,231,.55); }
+.deck-stage.dark .chrome, .deck-stage.dark .btns button, .deck-stage.dark .dots button { color: rgba(243,239,231,.55); }
 .deck-stage.dark .dots button.on, .deck-stage.dark .progress #cur { color: var(--ivory); }
 .deck-stage.dark .explore { color: var(--gold); }
 

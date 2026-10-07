@@ -29,7 +29,6 @@
         b.onclick = () => go(k);
         dots.appendChild(b);
     });
-    $('total').textContent = pad(N);
 
     function go(n) {
         n = Math.max(0, Math.min(N - 1, n));
@@ -38,10 +37,8 @@
         slides.forEach((s, k) => s.classList.toggle('active', k === n));
         [...dots.children].forEach((d, k) => d.classList.toggle('on', k === n));
         i = n;
-        $('cur').textContent = pad(n + 1);
         stage.classList.toggle('dark', slides[n].classList.contains('dark'));
         document.body.classList.toggle('on-dark', slides[n].classList.contains('dark'));
-        $('explore').classList.toggle('on', slides[n].hasAttribute('data-explore'));
         history.replaceState(null, '', '#' + (n + 1));
     }
 
@@ -108,17 +105,6 @@
     $('fsBtn').onclick = fullscreen;
     if (!canFs) $('fsBtn').hidden = true;
 
-    /* === LOOK SWITCHER (temporary, until one theme is chosen) === */
-    const THEMES = ['a', 'b'];
-    function setTheme(t) {
-        root.dataset.theme = t;
-        $('themeBtn').textContent = '风格 · ' + t.toUpperCase();
-        try { localStorage.setItem('777-theme', t); } catch (_) {}
-    }
-    function cycleTheme() { setTheme(THEMES[(THEMES.indexOf(root.dataset.theme) + 1) % THEMES.length]); }
-    $('themeBtn').onclick = cycleTheme;
-    try { const t = localStorage.getItem('777-theme'); if (THEMES.includes(t)) setTheme(t); } catch (_) {}
-
     /* === KEYBOARD === */
     addEventListener('keydown', e => {
         if (editing && (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') { e.preventDefault(); return save(); }
@@ -133,7 +119,6 @@
             case 'p': case 'P': present(); break;
             case 'f': case 'F': fullscreen(); break;
             case 'e': case 'E': toggleEdit(); break;
-            case 't': case 'T': cycleTheme(); break;
         }
     });
 

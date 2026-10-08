@@ -4,9 +4,9 @@
    light type on a scrim on page 2); every size is set for the big vertical screen.
    =========================================================== */
 :root {
-    --display-width: 1080px; --display-height: 1920px;
-    --safe-x: 80px;
-    --title-size: 105px; --body-size: 36px; --label-size: 23px;
+    --display-width: 2160px; --display-height: 3840px;
+    --safe-x: 160px;
+    --title-size: 210px; --body-size: 72px; --label-size: 46px;
     --bg: #F9F9F7; --ink: #111111; --char: #3B3B3B; --rule: rgba(17,17,17,.14);
     --blue: #1F4E9C; --light: #F5F3EF; --night: #011866;
     --f: 'Archivo', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
@@ -24,7 +24,7 @@ body { font-family: var(--f); color: var(--ink); -webkit-font-smoothing: antiali
 .slide.active { visibility: visible; opacity: 1; transition: opacity .9s var(--ease), visibility 0s; }
 
 /* Reveals — same as the original, distance scaled to the bigger canvas */
-.r { opacity: 0; transform: translateX(30px);
+.r { opacity: 0; transform: translateX(60px);
      transition: opacity 1s var(--ease) var(--d, 0s), transform 1.3s var(--ease) var(--d, 0s); }
 .slide.active .r { opacity: 1; transform: none; }
 .m { clip-path: inset(100% 0 0 0); transition: clip-path 1.8s var(--ease) var(--d, 0s); }
@@ -39,43 +39,43 @@ body { font-family: var(--f); color: var(--ink); -webkit-font-smoothing: antiali
    PAGE 1
    =========================================================== */
 .s1 { background: var(--bg); }
-.vid { position: absolute; left: 0; bottom: 0; width: 1080px; height: 608px; background: #000; overflow: hidden; }
+.vid { position: absolute; left: 0; bottom: 0; width: 2160px; height: 1216px; background: #000; overflow: hidden; }
 .vid img, .vid video { display: block; width: 100%; height: 100%; object-fit: contain; }
 
-.s1 .text { position: absolute; left: 48px; right: 48px; top: 90px; }
-.s1 .h { margin-top: 22px; }
-.s1 .text > .copy:nth-of-type(2) { margin-top: 35px; }
-.cobrand { margin-top: 55px; font: 800 90px/1 var(--f); font-stretch: 82%; letter-spacing: -.01em; }
+.s1 .text { position: absolute; left: 96px; right: 96px; top: 180px; }
+.s1 .h { margin-top: 44px; }
+.s1 .text > .copy:nth-of-type(2) { margin-top: 70px; }
+.cobrand { margin-top: 110px; font: 800 180px/1 var(--f); font-stretch: 82%; letter-spacing: -.01em; }
 .cobrand span { color: var(--blue); font-weight: 300; margin: 0 .12em; }
 
-.row { display: flex; align-items: center; gap: 32px; margin-top: 50px; }
+.row { display: flex; align-items: center; gap: 64px; margin-top: 100px; }
 .proof { flex: 1; list-style: none; }
-.proof li { display: flex; align-items: baseline; gap: 20px; padding: 17px 0 15px; position: relative; }
-.proof b { font: 700 65px/1 var(--f); font-stretch: 82%; }
+.proof li { display: flex; align-items: baseline; gap: 40px; padding: 34px 0 30px; position: relative; }
+.proof b { font: 700 130px/1 var(--f); font-stretch: 82%; }
 .proof small { font: 500 var(--label-size)/1 var(--f); letter-spacing: .2em; color: var(--blue); }
 
-.loop { position: relative; flex: none; width: 480px; height: 270px; overflow: hidden; background: #E6E3DD; }
+.loop { position: relative; flex: none; width: 960px; height: 540px; overflow: hidden; background: #E6E3DD; }
 .loop figure { position: absolute; inset: 0; background: 50% 50% / cover no-repeat; opacity: 0; transition: opacity .9s var(--ease); }
 .loop figure.shown { opacity: 1; }
 
-.row + .copy { margin-top: 48px; }
-.s1 .text > .lbl:last-child { margin-top: 28px; }
+.row + .copy { margin-top: 96px; }
+.s1 .text > .lbl:last-child { margin-top: 56px; }
 
 /* ===========================================================
    PAGE 2 — photo sits on the bottom edge, its own night-blue sky continues above
    =========================================================== */
 .s2 { background: var(--night); }
-.photo { position: absolute; left: 0; bottom: 0; width: 1080px; height: 1490px;
+.photo { position: absolute; left: 0; bottom: 0; width: 2160px; height: 2980px;
          background: url('assets/55-tower-day.jpg') 50% 100% / cover no-repeat;
          -webkit-mask: linear-gradient(transparent, #000 6%); mask: linear-gradient(transparent, #000 6%); }
 .scrim { position: absolute; inset: 0; pointer-events: none;
          background: linear-gradient(to bottom, rgba(12,10,9,.68), rgba(12,10,9,0) 52%), linear-gradient(to top, rgba(12,10,9,.55), rgba(12,10,9,0) 30%); }
-.s2 .text { position: absolute; left: var(--safe-x); right: var(--safe-x); top: 130px; text-align: center; }
-.s2 .h { font-size: 125px; color: var(--light); letter-spacing: -.01em; white-space: nowrap; }
-.close-line { margin-top: 28px; font: 500 40px/1.3 var(--f); letter-spacing: .08em; color: rgba(243,239,231,.82); }
-.rule { display: block; width: 80px; height: 2px; margin: 40px auto 35px; background: rgba(243,239,231,.55); }
-.site { font: 600 38px/1.2 var(--f); letter-spacing: .01em; color: var(--light); }
-.addr { margin-top: 10px; font: 500 24px/1.4 var(--f); letter-spacing: .14em; color: rgba(243,239,231,.7); }
+.s2 .text { position: absolute; left: var(--safe-x); right: var(--safe-x); top: 260px; text-align: center; }
+.s2 .h { font-size: 250px; color: var(--light); letter-spacing: -.01em; white-space: nowrap; }
+.close-line { margin-top: 56px; font: 500 80px/1.3 var(--f); letter-spacing: .08em; color: rgba(243,239,231,.82); }
+.rule { display: block; width: 160px; height: 4px; margin: 80px auto 70px; background: rgba(243,239,231,.55); }
+.site { font: 600 76px/1.2 var(--f); letter-spacing: .01em; color: var(--light); }
+.addr { margin-top: 20px; font: 500 48px/1.4 var(--f); letter-spacing: .14em; color: rgba(243,239,231,.7); }
 
 /* ===========================================================
    PAGE 1 — text entrance (on top of the shared .r slide-in)
@@ -93,11 +93,11 @@ body { font-family: var(--f); color: var(--ink); -webkit-font-smoothing: antiali
     transition: transform 1s var(--ease) calc(var(--d, 0s) + .35s), opacity .6s var(--ease) calc(var(--d, 0s) + .35s); }
 .s1.active .cobrand span { transform: none; opacity: 1; }
 /* proof list: rules draw left → right, then each row's words rise in */
-.proof li::before, .proof li:last-child::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: var(--rule);
+.proof li::before, .proof li:last-child::after { content: ''; position: absolute; left: 0; right: 0; height: 2px; background: var(--rule);
     transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.1s var(--ease) var(--ld, 0s); }
 .proof li::before { top: 0; }
 .proof li:last-child::after { bottom: 0; }
-.proof li > * { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease) calc(var(--ld, 0s) + .25s), transform 1s var(--ease) calc(var(--ld, 0s) + .25s); }
+.proof li > * { opacity: 0; transform: translateY(36px); transition: opacity .8s var(--ease) calc(var(--ld, 0s) + .25s), transform 1s var(--ease) calc(var(--ld, 0s) + .25s); }
 .proof li:nth-child(1) { --ld: .95s; } .proof li:nth-child(2) { --ld: 1.07s; } .proof li:nth-child(3) { --ld: 1.19s; }
 .proof li:last-child::after { transition-delay: 1.31s; }
 .s1.active .proof li::before, .s1.active .proof li:last-child::after { transform: none; }

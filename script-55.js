@@ -4,7 +4,7 @@
    Click / ← → / Space / PageUp / PageDown step by hand (the loop carries on from there).
    =========================================================== */
 (() => {
-    const W = 1080, H = 1920;
+    const W = 2160, H = 3840;
     const HOLD = [59000, 8000];          // ms per page — page 1 = full Earth video (58.9 s)
     const LOOP_STEP = 2500;              // ms per photo on page 1
     const stage = document.getElementById('stage');
